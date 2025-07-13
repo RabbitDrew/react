@@ -1,0 +1,38 @@
+.page-header {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 50px;
+
+    padding:  20px 80px 0 80px;
+}
+
+
+.header-input__wrapper {
+    .header-input {
+        width: 300px;
+        height: 40px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+}
+
+
+.header-search-btn__wrapper {
+    .search-btn {
+        width: 100px;
+        height: 40px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+        .search-btn-title {
+            font-size: 20px;
+        }
+    }
+}
