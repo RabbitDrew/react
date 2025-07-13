@@ -3,8 +3,8 @@ import { ResultList } from './core/components/result-list/result-list';
 function App() {
   return (
     <>
-    <Header />
-    <ResultList/>
+      <Header />
+      <ResultList />
     </>
   );
 }
