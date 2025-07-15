@@ -4,8 +4,8 @@ export const ResultList = () => {
     <>
       <main className="result-list__wrapper">
         <section className="result-list__header">
-          <h2 className="result-list-header-title">Item</h2>
-          <h2 className="result-list-header-title">Result</h2>
+          <h2 className="result-list-header-title">Item name</h2>
+          <h2 className="result-list-header-title">Item description</h2>
         </section>
 
         <section className="rersult-list__body">
@@ -46,6 +46,7 @@ export const ResultList = () => {
                
                 <h2 className="result-list-title">item-result</h2>
             </li>
+
           </ul>
         </section>
 

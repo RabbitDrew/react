@@ -1,6 +1,7 @@
 import './style/header.scss';
-
+import { get } from '../../api/get-data';
 export const Header = () => {
+  get()
   return (
     <>
       <header className="page-header">
@@ -8,6 +9,12 @@ export const Header = () => {
           <div className="header-input__wrapper">
             <input className="header-input" type="text" placeholder="Search" />
             <div className="header-input__style-line"></div>
+
+            <select className='page-header__categories' name="" id="">
+              <option className='category-placeholder' value="" disabled selected hidden>Chose category</option>
+              <option className='category' value="type">Type</option>
+            </select>
+            <div className="header-select__style-line"></div>
           </div>
 
           <div className="header-search-btn__wrapper">
