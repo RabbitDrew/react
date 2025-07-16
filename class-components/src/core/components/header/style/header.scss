@@ -41,7 +41,7 @@
         outline: none;
       }
 
-      &:focus~.header-input__style-line {
+      &:focus ~ .header-input__style-line {
         background-color: #ffbc85;
       }
     }
@@ -68,16 +68,15 @@
       cursor: pointer;
 
       padding: 0 5px;
-      font-size: 18px; 
+      font-size: 18px;
       color: #555555;
-    
-      .category{
-       font-size: 18px;
-      }
 
+      .category {
+        font-size: 18px;
+      }
     }
 
-     .header-select__style-line {
+    .header-select__style-line {
       width: 100%;
       height: 2px;
       background-color: #55555555;
@@ -90,9 +89,7 @@
     .page-header__categories:focus + .header-select__style-line {
       visibility: hidden;
     }
-
   }
-
 
   .header-search-btn__wrapper {
     .search-btn {
@@ -105,7 +102,7 @@
       align-items: center;
 
       cursor: pointer;
-      transition: background-color .2s ease-in-out;
+      transition: background-color 0.2s ease-in-out;
 
       .search-btn-title {
         font-size: 20px;

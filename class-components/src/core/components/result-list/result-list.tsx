@@ -11,42 +11,40 @@ export const ResultList = () => {
         <section className="rersult-list__body">
           <ul className="result-list">
             <li className="result-list-item">
-                <h2 className="result-list-title">item-title</h2>
-               
-                <h2 className="result-list-title">item-result</h2>
+              <h2 className="result-list-title">item-title</h2>
+
+              <h2 className="result-list-title">item-result</h2>
             </li>
 
-             <li className="result-list-item">
-                <h2 className="result-list-title">item-title</h2>
-               
-                <h2 className="result-list-title">item-result</h2>
+            <li className="result-list-item">
+              <h2 className="result-list-title">item-title</h2>
+
+              <h2 className="result-list-title">item-result</h2>
             </li>
 
-             <li className="result-list-item">
-                <h2 className="result-list-title">item-title</h2>
-               
-                <h2 className="result-list-title">item-result</h2>
+            <li className="result-list-item">
+              <h2 className="result-list-title">item-title</h2>
+
+              <h2 className="result-list-title">item-result</h2>
             </li>
 
+            <li className="result-list-item">
+              <h2 className="result-list-title">item-title</h2>
 
-             <li className="result-list-item">
-                <h2 className="result-list-title">item-title</h2>
-               
-                <h2 className="result-list-title">item-result</h2>
+              <h2 className="result-list-title">item-result</h2>
             </li>
 
-             <li className="result-list-item">
-                <h2 className="result-list-title">item-title</h2>
-               
-                <h2 className="result-list-title">item-result</h2>
+            <li className="result-list-item">
+              <h2 className="result-list-title">item-title</h2>
+
+              <h2 className="result-list-title">item-result</h2>
             </li>
 
-             <li className="result-list-item">
-                <h2 className="result-list-title">item-title</h2>
-               
-                <h2 className="result-list-title">item-result</h2>
-            </li>
+            <li className="result-list-item">
+              <h2 className="result-list-title">item-title</h2>
 
+              <h2 className="result-list-title">item-result</h2>
+            </li>
           </ul>
         </section>
 
