@@ -1,59 +1,70 @@
+import { Component, type ReactNode } from 'react';
 import './style/item-list.scss';
-export const ResultList = () => {
-  return (
-    <>
-      <main className="result-list__wrapper">
-        <section className="result-list__header">
-          <h2 className="result-list-header-title">Item name</h2>
-          <h2 className="result-list-header-title">Item description</h2>
-        </section>
 
-        <section className="rersult-list__body">
-          <ul className="result-list">
-            <li className="result-list-item">
-              <h2 className="result-list-title">item-title</h2>
 
-              <h2 className="result-list-title">item-result</h2>
-            </li>
+export class ResultList extends Component {
 
-            <li className="result-list-item">
-              <h2 className="result-list-title">item-title</h2>
+  
 
-              <h2 className="result-list-title">item-result</h2>
-            </li>
+  render(): ReactNode {
+    return (
+      <>
+        <main className="result-list__wrapper">
+          <section className="result-list__header">
+            <h2 className="result-list-header-title">Item name</h2>
+            <h2 className="result-list-header-title">Item description</h2>
+          </section>
 
-            <li className="result-list-item">
-              <h2 className="result-list-title">item-title</h2>
+          <section className="rersult-list__body">
+            <ul className="result-list">
+              <li className="result-list-item">
+                <h2 className="result-list-title">item-title</h2>
 
-              <h2 className="result-list-title">item-result</h2>
-            </li>
+                <h2 className="result-list-title">item-result</h2>
+              </li>
 
-            <li className="result-list-item">
-              <h2 className="result-list-title">item-title</h2>
+              <li className="result-list-item">
+                <h2 className="result-list-title">item-title</h2>
 
-              <h2 className="result-list-title">item-result</h2>
-            </li>
+                <h2 className="result-list-title">item-result</h2>
+              </li>
 
-            <li className="result-list-item">
-              <h2 className="result-list-title">item-title</h2>
+              <li className="result-list-item">
+                <h2 className="result-list-title">item-title</h2>
 
-              <h2 className="result-list-title">item-result</h2>
-            </li>
+                <h2 className="result-list-title">item-result</h2>
+              </li>
 
-            <li className="result-list-item">
-              <h2 className="result-list-title">item-title</h2>
+              <li className="result-list-item">
+                <h2 className="result-list-title">item-title</h2>
 
-              <h2 className="result-list-title">item-result</h2>
-            </li>
-          </ul>
-        </section>
+                <h2 className="result-list-title">item-result</h2>
+              </li>
 
-        <section className="err-btn__wrapper">
-          <div className="err-btn">
-            <h2 className="err-btn-title">Error-boundary</h2>
-          </div>
-        </section>
-      </main>
-    </>
-  );
-};
+              <li className="result-list-item">
+                <h2 className="result-list-title">item-title</h2>
+
+                <h2 className="result-list-title">item-result</h2>
+              </li>
+
+              <li className="result-list-item">
+                <h2 className="result-list-title">item-title</h2>
+
+                <h2 className="result-list-title">item-result</h2>
+              </li>
+            </ul>
+          </section>
+
+          <section className="err-btn__wrapper">
+            <div className="err-btn">
+              <h2 className="err-btn-title">Error-boundary</h2>
+            </div>
+          </section>
+        </main>
+      </>
+    )
+
+  }
+
+}
+

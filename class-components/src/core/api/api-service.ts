@@ -46,6 +46,51 @@ export const get = async () => {
 
 class ApiService {
   queryEndpoint:string
-  
+  url:string | undefined
+  data: OptionalIData | undefined
 
+  constructor(_queryEndpoint:string) {
+    this.queryEndpoint = _queryEndpoint
+    this.url = undefined
+    this.data = undefined
+  }
+
+  public initResponce = async ():Promise<void> => {
+    this.request()
+  }
+
+
+  private createUrl = async ():Promise<string> => {
+    this.url = `http://stapi.co/api/v1/rest/book/search?title=${this.queryEndpoint}`
+    return this.url
+  }
+
+
+  private request = async ():Promise<void> => {
+    const url = await this.createUrl()
+    try {
+      const responce = await fetch (url, {method: 'POST'})
+      if (!responce.ok) { 
+         throw new Error('responce is field')
+      }
+
+      this.data = await responce.json()
+      console.log(this.data)
+    }catch {
+      console.error('failed responce')
+    }
+  }
+
+
+  public dataDraft = async():Promise<OptionalIData | undefined> => {
+     return this.data
+  }
+
+}
+
+
+
+export const initApiService = (query:string) => {
+  const apiService = new ApiService(query)
+        apiService.initResponce()
 }
