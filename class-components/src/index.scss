@@ -1,7 +1,7 @@
 .page {
   min-width: 380px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   padding: 0;
   font-family: 'Georgia', sans-serif;
@@ -14,17 +14,35 @@
   justify-content: start;
   align-items: center;
 
-  background-color: #ffbc85;
 }
 
 #root {
   width: 100%;
   height: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: start;
   align-items: center;
+
+  position: relative;
 }
+
+#root::before {
+  content: '';
+  position: absolute; 
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url(./assets/34372.jpg);
+  background-position: center;
+  background-size: cover;
+  z-index: -1; 
+  filter: blur(2.5px);
+}
+
+
 
 * {
   scroll-behavior: smooth;
