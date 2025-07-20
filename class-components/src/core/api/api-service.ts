@@ -1,19 +1,5 @@
 import type { IBooksResponse } from './type/type';
 
-export const get = async () => {
-  const url = 'http://stapi.co/api/v1/rest/book/search?';
-  try {
-    const response = await fetch(url, { method: 'POST' });
-    if (!response.ok) {
-      throw new Error('responce hasn`t been got');
-    }
-    const data = await response.json();
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 export class ApiService {
   queryEndpoint: string;
   url: string | undefined;
@@ -30,7 +16,7 @@ export class ApiService {
   };
 
   private createUrl = async (): Promise<string> => {
-    this.url = `http://stapi.co/api/v1/rest/book/search?title=${this.queryEndpoint}`;
+    this.url = `https://stapi.co/api/v1/rest/book/search?title=${this.queryEndpoint}`;
     return this.url;
   };
 
