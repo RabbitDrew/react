@@ -1,34 +1,4 @@
-import { endpoints } from '../global/data';
-import type { IEndpoint } from '../global/type/type';
-
-interface IData {
-  alternateReality: boolean;
-  bloodType: null;
-  dayOfBirth: null;
-  dayOfDeath: null;
-  deceased: null;
-  fictionalCharacter: false;
-  gender: null;
-  height: null;
-  hologram: false;
-  hologramActivationDate: null;
-  hologramDateStatus: null;
-  hologramStatus: null;
-  maritalStatus: null;
-  mirror: boolean;
-  monthOfBirth: null;
-  monthOfDeath: null;
-  name: string;
-  placeOfBirth: null;
-  placeOfDeath: null;
-  serialNumber: null;
-  uid: string;
-  weight: null;
-  yearOfBirth: null;
-  yearOfDeath: null;
-}
-
-type OptionalIData = Partial<IData>;
+import type { IBooksResponse } from "./type/type";
 
 export const get = async () => {
   const url = 'http://stapi.co/api/v1/rest/book/search?';
@@ -44,10 +14,10 @@ export const get = async () => {
   }
 };
 
-class ApiService {
+export class ApiService {
   queryEndpoint:string
   url:string | undefined
-  data: OptionalIData | undefined
+  data: IBooksResponse | undefined
 
   constructor(_queryEndpoint:string) {
     this.queryEndpoint = _queryEndpoint
@@ -56,7 +26,7 @@ class ApiService {
   }
 
   public initResponce = async ():Promise<void> => {
-    this.request()
+  await this.request()
   }
 
 
@@ -75,22 +45,14 @@ class ApiService {
       }
 
       this.data = await responce.json()
-      console.log(this.data)
     }catch {
       console.error('failed responce')
     }
   }
 
 
-  public dataDraft = async():Promise<OptionalIData | undefined> => {
+  public dataDraft = async():Promise<IBooksResponse | undefined> => {
      return this.data
   }
 
-}
-
-
-
-export const initApiService = (query:string) => {
-  const apiService = new ApiService(query)
-        apiService.initResponce()
 }
