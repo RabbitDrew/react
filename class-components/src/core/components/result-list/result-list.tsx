@@ -7,13 +7,13 @@ interface IResultInputs {
 }
 interface IState {
   data: IBooksResponse | undefined;
-  page: number | undefined
+  page: number | undefined;
 }
 
 export class ResultList extends Component<IResultInputs> {
   state: IState = {
     data: undefined,
-    page: undefined
+    page: undefined,
   };
 
   getData = async (query: string) => {
@@ -28,7 +28,7 @@ export class ResultList extends Component<IResultInputs> {
       const fetchedData = await this.getData('');
       this.setState({
         data: fetchedData,
-        page: 1
+        page: 1,
       });
     };
     updateState();
@@ -50,12 +50,11 @@ export class ResultList extends Component<IResultInputs> {
             <ul className="result-list">
               {this.state.data ? (
                 this.state.data.books.map((obj, i) =>
-                 i > 10 && i < 20 ? (
-                    <li key = {obj.uid}className="result-list-item">
+                  i > 10 && i < 20 ? (
+                    <li key={obj.uid} className="result-list-item">
                       <h2 className="result-list-title">{obj.title}</h2>
                       <h2 className="result-list-title">
-                        {obj.publishedDay}. 
-                        {obj.publishedMonth}. 
+                        {obj.publishedDay}.{obj.publishedMonth}.
                         {obj.publishedYear}
                       </h2>
                     </li>
@@ -74,11 +73,10 @@ export class ResultList extends Component<IResultInputs> {
           </section>
 
           <section className="result-list__pagination">
-
             <div className="pag-arrow arrow-left">
               <h2 className="pag-arrow-title">&lt;</h2>
             </div>
-            
+
             <div className="pag-page">
               <h2 className="pag-page-title">{this.state.page}</h2>
             </div>

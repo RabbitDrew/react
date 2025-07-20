@@ -15,19 +15,17 @@ export class Header extends Component<IHeaderProps> {
       <>
         <header className="page-header">
           <div className="page-header__wrapper">
+            <h2 className="page-header__title">Stapi.co Fleet Library</h2>
 
-            <h2 className="page-header__title">
-              Stapi.co Fleet Library
-            </h2>
-            
             <div className="page-header__search-bar">
-
               <div className="header-input__wrapper">
                 <input
                   className="header-input"
                   type="text"
                   placeholder="Search"
-                  onChange={(e) => {setInputValue(e);}}
+                  onChange={(e) => {
+                    setInputValue(e);
+                  }}
                 />
                 <div className="header-input__style-line"></div>
               </div>
@@ -37,7 +35,6 @@ export class Header extends Component<IHeaderProps> {
                   <h2 className="search-btn-title">Search</h2>
                 </div>
               </div>
-
             </div>
           </div>
         </header>
