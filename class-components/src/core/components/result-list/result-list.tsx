@@ -1,41 +1,24 @@
-import { Component, type ReactNode } from 'react';
 import './style/item-list.scss';
-import { ApiService } from '../../api/api-service';
-import type { IBooksResponse } from '../../api/type/type';
-interface IResultInputs {
-  inputVal: string | undefined;
-}
-interface IState {
-  data: IBooksResponse | undefined;
-  page: number | undefined;
-}
+import { Component, type ReactNode } from 'react';
+import type { IResultInputs, IState } from './type/type';
+import { SetDefoultDataList } from './core/set-defoult-state';
 
 export class ResultList extends Component<IResultInputs> {
   state: IState = {
     data: undefined,
     page: undefined,
-  };
-
-  getData = async (query: string) => {
-    const newInst = new ApiService(query);
-    await newInst.initResponce();
-    const data = await newInst.dataDraft();
-    return data;
+    totalElements: undefined, 
+    totalPages: undefined
   };
 
   componentDidMount(): void {
-    const updateState = async () => {
-      const fetchedData = await this.getData('');
-      this.setState({
-        data: fetchedData,
-        page: 1,
-      });
-    };
-    updateState();
+    const dataState = new SetDefoultDataList(this.state, this.setState.bind(this))
+    dataState.initDefoultState()
+
   }
 
   render(): ReactNode {
-    console.log(this.state.data);
+    console.log(this.state.totalElements);
     return (
       <>
         <main className="result-list__wrapper">
@@ -50,7 +33,7 @@ export class ResultList extends Component<IResultInputs> {
             <ul className="result-list">
               {this.state.data ? (
                 this.state.data.books.map((obj, i) =>
-                  i > 10 && i < 20 ? (
+                  this.state.totalElements && i < this.state.totalElements/5 ? (
                     <li key={obj.uid} className="result-list-item">
                       <h2 className="result-list-title">{obj.title}</h2>
                       <h2 className="result-list-title">
