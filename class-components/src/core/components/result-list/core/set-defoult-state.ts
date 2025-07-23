@@ -31,7 +31,6 @@ export class SetDefoultDataList {
     if (this.setState) {
       this.setState({
         data: this.fetchedData,
-        page: 1,
         totalElements: this.fetchedData?.books.length, 
         totalPages: this.setTotalPages()
       });

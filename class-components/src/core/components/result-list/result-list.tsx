@@ -2,12 +2,12 @@ import './style/item-list.scss';
 import { Component, type ReactNode } from 'react';
 import type { IResultInputs, IState } from './type/type';
 import { SetDefoultDataList } from './core/set-defoult-state';
-
+import { PaginationController } from './core/page-counter';
 export class ResultList extends Component<IResultInputs> {
   state: IState = {
     data: undefined,
-    page: undefined,
-    totalElements: undefined, 
+    page: 1,
+    totalElements: undefined,
     totalPages: undefined
   };
 
@@ -33,7 +33,7 @@ export class ResultList extends Component<IResultInputs> {
             <ul className="result-list">
               {this.state.data ? (
                 this.state.data.books.map((obj, i) =>
-                  this.state.totalElements && i < this.state.totalElements/5 ? (
+                  this.state.totalElements && i < this.state.totalElements / 5 ? (
                     <li key={obj.uid} className="result-list-item">
                       <h2 className="result-list-title">{obj.title}</h2>
                       <h2 className="result-list-title">
@@ -56,7 +56,12 @@ export class ResultList extends Component<IResultInputs> {
           </section>
 
           <section className="result-list__pagination">
-            <div className="pag-arrow arrow-left">
+            <div className="pag-arrow arrow-left"
+              onClick={() => {
+                const controller = new PaginationController(this.state, this.setState.bind(this))
+                controller.prev()
+              }}
+            >
               <h2 className="pag-arrow-title">&lt;</h2>
             </div>
 
@@ -64,7 +69,12 @@ export class ResultList extends Component<IResultInputs> {
               <h2 className="pag-page-title">{this.state.page}</h2>
             </div>
 
-            <div className="pag-arrow arrow-right">
+            <div className="pag-arrow arrow-right"
+              onClick={() => {
+                const controller = new PaginationController(this.state, this.setState.bind(this))
+                controller.next()
+              }}
+            >
               <h2 className="pag-arrow-title">&gt;</h2>
             </div>
           </section>

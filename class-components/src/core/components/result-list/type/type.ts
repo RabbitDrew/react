@@ -4,7 +4,7 @@ export interface IResultInputs {
 }
 export interface IState {
   data: IBooksResponse | undefined;
-  page: number | undefined;
+  page: number;
   totalElements: number | undefined
   totalPages: number | undefined
 }
