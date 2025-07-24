@@ -1,8 +1,6 @@
-import type { IState } from '../type/type';
+import type { IState, SetState} from '../type/type';
 import type { IBooksResponse } from '../../../api/type/type';
 import { ApiService } from '../../../api/api-service';
-
-type SetState = (state: object) => void;
 
 export class DataListLoader {
   fetchedData: IBooksResponse | undefined;

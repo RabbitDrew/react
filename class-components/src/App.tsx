@@ -11,11 +11,10 @@ class App extends Component {
     inputValue: undefined,
   };
 
-  setInputValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  setInputValue = (inputValue:string): void => {
     this.setState({
-      inputValue: e.target.value,
+      inputValue: inputValue,
     });
-    console.log(this.state.inputValue);
   };
 
   render() {

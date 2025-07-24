@@ -1,5 +1,4 @@
-import type { IState } from "../type/type";
-type SetState = (state: object) => void;
+import type { IState, SetState } from "../type/type";
 
 export class PaginationController {
     state: IState

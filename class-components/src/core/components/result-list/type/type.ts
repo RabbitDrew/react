@@ -7,3 +7,5 @@ export interface IState {
   page: number;
   totalPages: number | undefined;
 }
+
+export type SetState = (state: object) => void;
