@@ -4,21 +4,25 @@ import { ApiService } from '../../../api/api-service';
 
 type SetState = (state: object) => void;
 
-export class SetDefoultDataList {
+export class DataListLoader {
   fetchedData: IBooksResponse | undefined;
   state: IState | undefined;
   setState: SetState | undefined;
-  constructor(_state:IState, _setState:SetState) {
+  constructor(_state: IState, _setState: SetState) {
     this.fetchedData = undefined;
     this.setState = _setState;
-    this.state =_state;
+    this.state = _state;
   }
 
+  public initDefoultState = async () => {
+    await this.getData('');
+    await this.setData();
+  };
 
-  public initDefoultState = async() => {
-    await this.getData('')
-    await this.setData()
-  }
+  public initStateByQuery = async (query: string | undefined) => {
+    await this.getData(query || '');
+    await this.setData();
+  };
 
   private getData = async (query: string) => {
     const service = new ApiService(query);
@@ -26,47 +30,18 @@ export class SetDefoultDataList {
     this.fetchedData = await service.dataDraft();
   };
 
-
   private setData = async () => {
     if (this.setState) {
       this.setState({
         data: this.fetchedData,
-        totalElements: this.fetchedData?.books.length, 
-        totalPages: this.setTotalPages()
+        totalPages: this.setTotalPages(),
       });
     }
   };
 
-
-  private setTotalPages = ():number |undefined => {
+  private setTotalPages = (): number | undefined => {
     if (this.fetchedData) {
-        return Math.ceil(this.fetchedData.books.length/10)
+      return Math.ceil(this.fetchedData.books.length / 10);
     }
-  }
+  };
 }
-/*
-  state: IState = {
-    data: undefined,
-    page: undefined,
-    totalPages: undefined
-  };
-
-  getData = async (query: string) => {
-    const newInst = new ApiService(query);
-    await newInst.initResponce();
-    const data = await newInst.dataDraft();
-    return data;
-  };
-
-  componentDidMount(): void {
-    const updateState = async () => {
-      const fetchedData = await this.getData('');
-      this.setState({
-        data: fetchedData,
-        page: 1,
-      });
-    };
-    updateState();
-  }
-
-*/

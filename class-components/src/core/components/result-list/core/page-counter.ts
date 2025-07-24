@@ -28,12 +28,13 @@ export class PaginationController {
         }
     }
 
-    public firstIndex = () => {
-
+    public indexOfFirstElement = ():number => {
+        const indexOfFirstElemnt = (this.state.page - 1) * 10 
+        return indexOfFirstElemnt
     }
 
-    public lastIndex = () => {
-        
+    public IndexOfLastElement = ():number => {
+        const IndexOfLastElement = (this.state.page  * 10) -1
+        return IndexOfLastElement 
     }
 }
-
