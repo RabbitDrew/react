@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Header } from './core/components/header/header';
 import { ResultList } from './core/components/result-list/result-list';
-
+import { ErrorBoundary } from './core/components/error/error';
 interface IInputState {
   inputValue: string | undefined;
 }
@@ -21,10 +21,11 @@ class App extends Component {
     return (
       <>
         <Header setInputValue={this.setInputValue} />
-        <ResultList inputVal={this.state.inputValue} />
+        <ErrorBoundary>
+          <ResultList inputVal={this.state.inputValue} />
+        </ErrorBoundary>
       </>
     );
   }
 }
-
 export default App;

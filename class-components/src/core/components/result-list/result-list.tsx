@@ -29,8 +29,6 @@ export class ResultList extends Component<IResultInputs> {
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     console.log(error, errorInfo)
 
-    
-
   }
 
   render(): ReactNode {
