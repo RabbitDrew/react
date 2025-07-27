@@ -1,16 +1,14 @@
 import './style/header.scss';
-//import { initApiService } from '../../api/api-service';
 import { Component, type ReactNode } from 'react';
 
 interface IHeaderProps {
-  setInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setInputValue: (inputValue: string) => void;
 }
 
 export class Header extends Component<IHeaderProps> {
   render(): ReactNode {
-    // intialisation props
-    // or we can write onChange={(e) => this.props.setInputValue(e)}
     const { setInputValue } = this.props;
+    let inputValue: string = '';
     return (
       <>
         <header className="page-header">
@@ -24,14 +22,24 @@ export class Header extends Component<IHeaderProps> {
                   type="text"
                   placeholder="Search"
                   onChange={(e) => {
-                    setInputValue(e);
+                    inputValue = e.target.value;
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      setInputValue(inputValue);
+                    }
                   }}
                 />
                 <div className="header-input__style-line"></div>
               </div>
 
               <div className="header-search-btn__wrapper">
-                <div className="search-btn">
+                <div
+                  className="search-btn"
+                  onClick={() => {
+                    setInputValue(inputValue);
+                  }}
+                >
                   <h2 className="search-btn-title">Search</h2>
                 </div>
               </div>
