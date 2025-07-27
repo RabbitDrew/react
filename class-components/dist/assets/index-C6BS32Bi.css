@@ -1,0 +1,300 @@
+html {
+  height: 100%;
+}
+.page {
+  min-width: 380px;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  font-family: Quicksand, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  background: linear-gradient(135deg, #3a3a3a, #264d73 60%, #121212);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+* {
+  scroll-behavior: smooth;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+.page-header {
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px 80px 10px;
+}
+.page-header__wrapper {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffffa0;
+  border: 1px solid rgba(85, 85, 85, 0.3333333333);
+  border-radius: 10px;
+  padding: 30px;
+}
+.page-header__wrapper .page-header__title {
+  width: 100%;
+  text-align: start;
+}
+.page-header__wrapper .page-header__search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+.page-header__wrapper .page-header__search-bar .header-input__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-input__wrapper
+  .header-input {
+  width: 100%;
+  height: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  color: #555;
+  font-size: 18px;
+  font-weight: 500;
+  background: none;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-input__wrapper
+  .header-input:focus {
+  outline: none;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-input__wrapper
+  .header-input:focus
+  ~ .header-input__style-line {
+  background-color: #ffffffd3;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-input__wrapper
+  .header-input__style-line {
+  width: 100%;
+  height: 2px;
+  background-color: #5555;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-input__wrapper
+  .page-header__categories {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding: 0 5px;
+  font-size: 18px;
+  color: #555;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-input__wrapper
+  .page-header__categories
+  .category {
+  font-size: 18px;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-search-btn__wrapper
+  .search-btn {
+  width: 100px;
+  height: 40px;
+  border: 1px solid rgba(85, 85, 85, 0.3333333333);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-search-btn__wrapper
+  .search-btn
+  .search-btn-title {
+  font-size: 20px;
+}
+.page-header__wrapper
+  .page-header__search-bar
+  .header-search-btn__wrapper
+  .search-btn:hover {
+  background-color: #ffffffd3;
+}
+.result-list__wrapper {
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  padding: 20px 80px 0;
+}
+.result-list__header {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 50px;
+  border-radius: 10px;
+  border: 1px solid rgba(85, 85, 85, 0.3333333333);
+  background-color: #ffffffa0;
+}
+.result-list__header .result-list-header-title {
+  width: 50%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+.rersult-list__body {
+  width: 1440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rersult-list__body .result-list {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: #ffffffa0;
+  border-radius: 10px;
+  border: 1px solid rgba(85, 85, 85, 0.3333333333);
+  padding: 0 10px;
+}
+.rersult-list__body .result-list .result-list-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-bottom: 1px solid rgba(85, 85, 85, 0.3333333333);
+}
+.rersult-list__body .result-list .result-list-item .result-list-title {
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+.rersult-list__body .result-list-item:last-child {
+  border: none;
+}
+.err-btn__wrapper {
+  max-width: 800px;
+  width: 80%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.err-btn__wrapper .err-btn {
+  padding: 10px;
+  border: 1px solid rgba(85, 85, 85, 0.3333333333);
+  border-radius: 5px;
+  background-color: #ffffffa0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.err-btn__wrapper .err-btn .err-btn-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+.err-btn__wrapper .err-btn:hover {
+  background-color: #ffffffd3;
+}
+.result-list__pagination {
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.result-list__pagination .pag-arrow,
+.result-list__pagination .pag-page {
+  padding: 10px;
+  background-color: #ffffffa0;
+  border-radius: 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+.result-list__pagination .pag-arrow .pag-page-title,
+.result-list__pagination .pag-arrow .pag-arrow-title,
+.result-list__pagination .pag-page .pag-page-title,
+.result-list__pagination .pag-page .pag-arrow-title {
+  font-size: 18px;
+  font-weight: 400;
+}
+.result-list__pagination .pag-arrow {
+  cursor: pointer;
+}
+.result-list__pagination .pag-arrow:hover {
+  background-color: #ffffffd3;
+}
