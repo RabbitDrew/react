@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Header } from './core/components/header/header';
 import { ResultList } from './core/components/result-list/result-list';
-
+import { ErrorBoundary } from './core/components/error/error';
 interface IInputState {
   inputValue: string | undefined;
 }
@@ -11,21 +11,24 @@ class App extends Component {
     inputValue: undefined,
   };
 
-  setInputValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  setInputValue = (inputValue: string): void => {
     this.setState({
-      inputValue: e.target.value,
+      inputValue: inputValue,
     });
-    console.log(this.state.inputValue);
   };
 
   render() {
     return (
       <>
         <Header setInputValue={this.setInputValue} />
-        <ResultList inputVal={this.state.inputValue} />
+        <ErrorBoundary>
+          <ResultList
+            inputVal={this.state.inputValue}
+            testError={ErrorBoundary.testError}
+          />
+        </ErrorBoundary>
       </>
     );
   }
 }
-
 export default App;

@@ -1,41 +1,43 @@
-import { Component, type ReactNode } from 'react';
 import './style/item-list.scss';
-import { ApiService } from '../../api/api-service';
-import type { IBooksResponse } from '../../api/type/type';
-interface IResultInputs {
-  inputVal: string | undefined;
-}
-interface IState {
-  data: IBooksResponse | undefined;
-  page: number | undefined;
-}
+import { Component, type ReactNode } from 'react';
+import type { IResultInputs, IState } from './type/type';
+import { DataListLoader } from './core/dataListLoader';
+import { PaginationController } from './core/page-counter';
 
 export class ResultList extends Component<IResultInputs> {
   state: IState = {
     data: undefined,
-    page: undefined,
-  };
-
-  getData = async (query: string) => {
-    const newInst = new ApiService(query);
-    await newInst.initResponce();
-    const data = await newInst.dataDraft();
-    return data;
+    page: 1,
+    totalPages: undefined,
+    testError: false,
   };
 
   componentDidMount(): void {
-    const updateState = async () => {
-      const fetchedData = await this.getData('');
-      this.setState({
-        data: fetchedData,
-        page: 1,
-      });
-    };
-    updateState();
+    const dataState = new DataListLoader(this.state, this.setState.bind(this));
+    dataState.initDefoultState();
+  }
+
+  componentDidUpdate(prevProps: Readonly<IResultInputs>): void {
+    if (prevProps.inputVal !== this.props.inputVal) {
+      const dataState = new DataListLoader(
+        this.state,
+        this.setState.bind(this)
+      );
+      dataState.initStateByQuery(this.props.inputVal);
+    }
   }
 
   render(): ReactNode {
-    console.log(this.state.data);
+    // test error boundary
+    this.props.testError(this.state);
+
+    const controller = new PaginationController(
+      this.state,
+      this.setState.bind(this)
+    );
+    const first = controller.indexOfFirstElement();
+    const last = controller.IndexOfLastElement();
+
     return (
       <>
         <main className="result-list__wrapper">
@@ -48,9 +50,9 @@ export class ResultList extends Component<IResultInputs> {
 
           <section className="rersult-list__body">
             <ul className="result-list">
-              {this.state.data ? (
+              {this.state.data && this.state.data.books.length !== 0 ? (
                 this.state.data.books.map((obj, i) =>
-                  i > 10 && i < 20 ? (
+                  i >= first && i <= last ? (
                     <li key={obj.uid} className="result-list-item">
                       <h2 className="result-list-title">{obj.title}</h2>
                       <h2 className="result-list-title">
@@ -67,13 +69,23 @@ export class ResultList extends Component<IResultInputs> {
           </section>
 
           <section className="err-btn__wrapper">
-            <div className="err-btn">
+            <div
+              className="err-btn"
+              onClick={() => {
+                this.setState({ testError: true });
+              }}
+            >
               <h2 className="err-btn-title">Error-boundary</h2>
             </div>
           </section>
 
           <section className="result-list__pagination">
-            <div className="pag-arrow arrow-left">
+            <div
+              className="pag-arrow arrow-left"
+              onClick={() => {
+                controller.prev();
+              }}
+            >
               <h2 className="pag-arrow-title">&lt;</h2>
             </div>
 
@@ -81,7 +93,12 @@ export class ResultList extends Component<IResultInputs> {
               <h2 className="pag-page-title">{this.state.page}</h2>
             </div>
 
-            <div className="pag-arrow arrow-right">
+            <div
+              className="pag-arrow arrow-right"
+              onClick={() => {
+                controller.next();
+              }}
+            >
               <h2 className="pag-arrow-title">&gt;</h2>
             </div>
           </section>
