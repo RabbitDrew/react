@@ -36,7 +36,7 @@ interface PageInfo {
 }
 
 interface SortInfo {
-  clauses:[];
+  clauses: [];
 }
 
 export interface IBooksResponse {

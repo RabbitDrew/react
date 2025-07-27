@@ -8,7 +8,7 @@ interface IHeaderProps {
 export class Header extends Component<IHeaderProps> {
   render(): ReactNode {
     const { setInputValue } = this.props;
-    let inputValue: string = ''
+    let inputValue: string = '';
     return (
       <>
         <header className="page-header">
@@ -22,11 +22,11 @@ export class Header extends Component<IHeaderProps> {
                   type="text"
                   placeholder="Search"
                   onChange={(e) => {
-                    inputValue = e.target.value
+                    inputValue = e.target.value;
                   }}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                      setInputValue(inputValue)
+                      setInputValue(inputValue);
                     }
                   }}
                 />
@@ -34,9 +34,12 @@ export class Header extends Component<IHeaderProps> {
               </div>
 
               <div className="header-search-btn__wrapper">
-                <div className="search-btn" onClick={() => {
-                  setInputValue(inputValue)
-                }}>
+                <div
+                  className="search-btn"
+                  onClick={() => {
+                    setInputValue(inputValue);
+                  }}
+                >
                   <h2 className="search-btn-title">Search</h2>
                 </div>
               </div>

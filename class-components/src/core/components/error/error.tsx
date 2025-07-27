@@ -1,5 +1,6 @@
 import { Component, type ReactNode } from 'react';
 import './style/error.scss';
+import type { IState } from '../result-list/type/type';
 interface IPropsErrorBoundary {
   children: ReactNode;
 }
@@ -11,11 +12,11 @@ export class ErrorBoundary extends Component<IPropsErrorBoundary> {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError() {
+  public static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  errorMessage = () => {
+  public errorMessage = () => {
     return (
       <>
         <div className="page-error">
@@ -27,6 +28,12 @@ export class ErrorBoundary extends Component<IPropsErrorBoundary> {
         </div>
       </>
     );
+  };
+
+  public static testError = (state: IState): void => {
+    if (state.testError === true) {
+      throw new Error('component error');
+    }
   };
 
   render() {

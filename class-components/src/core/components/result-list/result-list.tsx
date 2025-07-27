@@ -1,7 +1,7 @@
 import './style/item-list.scss';
-import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { Component, type ReactNode } from 'react';
 import type { IResultInputs, IState } from './type/type';
-import { DataListLoader } from './core/set-defoult-state';
+import { DataListLoader } from './core/dataListLoader';
 import { PaginationController } from './core/page-counter';
 
 export class ResultList extends Component<IResultInputs> {
@@ -9,29 +9,28 @@ export class ResultList extends Component<IResultInputs> {
     data: undefined,
     page: 1,
     totalPages: undefined,
+    testError: false,
   };
 
   componentDidMount(): void {
-    const dataState = new DataListLoader (
-      this.state,
-      this.setState.bind(this)
-    );
+    const dataState = new DataListLoader(this.state, this.setState.bind(this));
     dataState.initDefoultState();
   }
 
-  componentDidUpdate(prevProps: Readonly<IResultInputs>, prevState: Readonly<any>): void {
-  if (prevProps.inputVal !== this.props.inputVal) {
-    const dataState = new DataListLoader(this.state, this.setState.bind(this));
-    dataState.initStateByQuery(this.props.inputVal);
-  }
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.log(error, errorInfo)
-
+  componentDidUpdate(prevProps: Readonly<IResultInputs>): void {
+    if (prevProps.inputVal !== this.props.inputVal) {
+      const dataState = new DataListLoader(
+        this.state,
+        this.setState.bind(this)
+      );
+      dataState.initStateByQuery(this.props.inputVal);
+    }
   }
 
   render(): ReactNode {
+    // test error boundary
+    this.props.testError(this.state);
+
     const controller = new PaginationController(
       this.state,
       this.setState.bind(this)
@@ -51,8 +50,7 @@ export class ResultList extends Component<IResultInputs> {
 
           <section className="rersult-list__body">
             <ul className="result-list">
-              {this.state.data && 
-               this.state.data.books.length !==0 ? (
+              {this.state.data && this.state.data.books.length !== 0 ? (
                 this.state.data.books.map((obj, i) =>
                   i >= first && i <= last ? (
                     <li key={obj.uid} className="result-list-item">
@@ -71,7 +69,12 @@ export class ResultList extends Component<IResultInputs> {
           </section>
 
           <section className="err-btn__wrapper">
-            <div className="err-btn">
+            <div
+              className="err-btn"
+              onClick={() => {
+                this.setState({ testError: true });
+              }}
+            >
               <h2 className="err-btn-title">Error-boundary</h2>
             </div>
           </section>

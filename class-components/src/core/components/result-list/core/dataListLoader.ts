@@ -1,4 +1,4 @@
-import type { IState, SetState} from '../type/type';
+import type { IState, SetState } from '../type/type';
 import type { IBooksResponse } from '../../../api/type/type';
 import { ApiService } from '../../../api/api-service';
 

@@ -11,7 +11,7 @@ class App extends Component {
     inputValue: undefined,
   };
 
-  setInputValue = (inputValue:string): void => {
+  setInputValue = (inputValue: string): void => {
     this.setState({
       inputValue: inputValue,
     });
@@ -22,7 +22,10 @@ class App extends Component {
       <>
         <Header setInputValue={this.setInputValue} />
         <ErrorBoundary>
-          <ResultList inputVal={this.state.inputValue} />
+          <ResultList
+            inputVal={this.state.inputValue}
+            testError={ErrorBoundary.testError}
+          />
         </ErrorBoundary>
       </>
     );
