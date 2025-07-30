@@ -30,7 +30,6 @@ export class ResultList extends Component<IResultInputs> {
   render(): ReactNode {
     // test error boundary
     this.props.testError(this.state);
-
     const controller = new PaginationController(
       this.state,
       this.setState.bind(this)
